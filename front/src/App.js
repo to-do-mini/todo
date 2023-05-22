@@ -8,10 +8,12 @@ import List from "./Pages/List";
 import LogIn from "./Pages/LogIn";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import AuthContextProvider from "./context/AuthContext";
 
 function App() {
   return (
     <BrowserRouter>
+    <AuthContextProvider>
     <NavBar />
       <Routes>
         <Route element={<Home/>} path="/"/>
@@ -22,6 +24,7 @@ function App() {
         <Route element={<List/>} path="/List"/>
       </Routes>
     <Footer />
+    </AuthContextProvider>
     </BrowserRouter>
   );
 }
