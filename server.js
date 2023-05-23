@@ -9,6 +9,7 @@ const jwt = require("jsonwebtoken");
 
 app.use(express.json());
 app.use(cors());
+
 // let currentUser;
 app.get("/", async (req, res) => {
   const snapShot = await User.get();
