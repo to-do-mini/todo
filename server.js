@@ -25,6 +25,7 @@ app.get("/LogIn", authenticateToken, (req, res) => {});
 app.post("/create", async (req, res) => {
   let data = req.body;
   console.log(data);
+  // generate token
   const accessToken = jwt.sign(data, process.env.ACCESS_TOKEN_SECRET);
   data = { data: data, accessToken: accessToken };
   await User.add(data);

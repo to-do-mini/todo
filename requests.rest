@@ -35,7 +35,7 @@ Content-Type: application/json
 ###
 GET http://localhost:5000/LogIn
 Content-Type: application/json
-Authorization: Breaer eyhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJBbWFuaSIsImxhc3RuYW1lIjoiWnlvdWQiLCJlbWFpbCI6IkFtYW5pQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiQXdiZ2NlIzEiLCJpYXQiOjE2ODQ3Nzc1NDJ9.Tz4YovpxK1Ty_kk8GovHqidVGRejOezpoUWWd-sjHSE
+Authorization: Breaer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdG5hbWUiOiJBbWFuaSIsImxhc3RuYW1lIjoiWnlvdWQiLCJlbWFpbCI6IkFtYW5pLnNoenlvdWRAZ21haWwuY29tIiwicGFzc3dvcmQiOiIxMjM0NTYiLCJpYXQiOjE2ODQ4MjE3ODZ9.iH1bGNLm7pu9PGqYU_ifjkMJyWC5YSF_-5vOQcTnokQ
 
 {
     

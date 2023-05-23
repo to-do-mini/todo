@@ -55,24 +55,14 @@ const NavBar = () => {
           <li>
             <Link to="/ContactUs">Contact</Link>
           </li>
+          { auth ? <li><Link to="/List"  role="menuitem"> My List </Link></li> : <></>}
         </ul>
       </div>
       <div className="navbar-end">
        { auth ?   
 
-    <div className="dropdown dropdown-end">
-    <label tabIndex={0} className="btn m-1">Hi! {user !== null ? user.firstname : <></>}</label>
-    <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-      <li><Link to="/List"  role="menuitem"> My List </Link></li>
-      <li><Link to="/"  role="menuitem" onClick={() => {setAuth(false); localStorage.removeItem("currentUser");}}> Logout </Link></li>
-    </ul>
-  </div>
-
-     
-     : <Link to="/LogIn" className="btn">
-          Login
-        </Link>}
-      </div>
+      <Link to="/" className="btn" onClick={() => {setAuth(false); localStorage.removeItem("currentUser");}}> Logout </Link> : <Link to="/LogIn" className="btn"> Login </Link>}
+      </div> 
     </div>
   );
 };
