@@ -1,6 +1,52 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
+
 
 function ContactUs() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const form = useRef();
+
+  const [massage, setMassage] = useState({
+    msg: '',
+    theme: ''
+  });
+
+  const sendEmail = (event) => {
+    event.preventDefault();
+
+    const email = event.target.user_name.value;
+    const user_email = event.target.user_email.value;
+    const message = event.target.message.value;
+
+    if (!email || !user_email || !message) {
+      setMassage({ msg: 'Please fill in all fields!.', theme: 'red' });
+      return;
+    }
+
+    emailjs
+      .sendForm(
+        "service_o4z25iw",
+        "template_dhlo5h4",
+        form.current,
+        "IuZ5ilZIX-c2uVwa7"
+      )
+      .then(
+        (result) => {
+          setMassage({ msg: 'Your message has been sent successfully, our team will contact you as soon as possible.', theme: 'green' });
+        },
+        (error) => {
+          setMassage({ msg: 'Something went wrong, please try again later!.', theme: 'red' });
+          console.log("massage error :" + error)
+        }
+      );
+      
+    document.getElementById('form').reset();
+  };
+
   return (
     
     <div className="container my-24 px-6 mx-auto">
@@ -78,9 +124,10 @@ function ContactUs() {
             </div>
           </div>
           <div className="max-w-[700px] mx-auto">
-            <form>
+            <form id="form" ref={form} onSubmit={sendEmail}>
               <div className="form-group mb-6">
                 <input
+                  name="user_name"
                   type="text"
                   className="form-control block
               w-full
@@ -102,6 +149,7 @@ function ContactUs() {
               </div>
               <div className="form-group mb-6">
                 <input
+                  name="user_email"
                   type="email"
                   className="form-control block
               w-full
@@ -123,6 +171,7 @@ function ContactUs() {
               </div>
               <div className="form-group mb-6">
                 <textarea
+                  name="message"
                   className="
               form-control
               block
@@ -146,20 +195,7 @@ function ContactUs() {
                   defaultValue={""}
                 />
               </div>
-              <div className="form-group form-check text-center mb-6">
-                <input
-                  type="checkbox"
-                  className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain mr-2 cursor-pointer"
-                  id="exampleCheck87"
-                  defaultChecked=""
-                />
-                <label
-                  className="form-check-label inline-block text-gray-800"
-                  htmlFor="exampleCheck87"
-                >
-                  Send me a copy of this message
-                </label>
-              </div>
+              
               <button
                 type="submit"
                 className="
@@ -184,6 +220,7 @@ function ContactUs() {
                 Send
               </button>
             </form>
+            <p className={`font-bold mt-3 text-${massage.theme}-500`}>{massage.msg}</p>
           </div>
         </div>
       </div>
